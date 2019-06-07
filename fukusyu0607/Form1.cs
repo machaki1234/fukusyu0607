@@ -16,17 +16,29 @@ namespace fukusyu0607
         //ランダムのシード(種)を指定して初期化したら、
         //それを使い続ける
         private static Random rand = new Random();
-        int vx =rand.Next(-10,11);
-        int vy = rand.Next(-10, 11);
-        int vx1 = rand.Next(-10, 11);
-        int vy1 = rand.Next(-10, 11);
-        int vx2 = rand.Next(-10, 11);
-        int vy2 = rand.Next(-10, 11);
         int time = 100 * 5;
+
+        int[] velx = new int[3];
+        int[] vely = new int[3];
 
         public Form1()
         {
             InitializeComponent();
+
+
+            /*
+            velx[0] = rand.Next(-10, 11);
+            velx[1] = rand.Next(-10, 11);
+            velx[2] = rand.Next(-10, 11);
+             */
+            for (int i = 0; i < 3;i++ )
+            {
+                velx[i] = rand.Next(-10, 11);
+                vely[i] = rand.Next(-10, 11);
+            }
+                vely[0] = rand.Next(-10, 11);
+            vely[1] = rand.Next(-10, 11);
+            vely[2] = rand.Next(-10, 11);
             
             // 以下にlabel1.Leftとlabel1.Topの座標をランダムで求めよ
             label1.Left = rand.Next(ClientSize.Width - label1.Width);
@@ -51,24 +63,24 @@ namespace fukusyu0607
                 timer1.Enabled = false;
             }
             
-            label1.Left += vx;
-            label1.Top += vy;
+            label1.Left += velx[0];
+            label1.Top += vely[0];
 
             if(label1.Left<0)
             {
-                vx = Math.Abs(vx);
+                velx[0] = Math.Abs(velx[0]);
             }
             if(label1.Top<0)
             {
-                vy = Math.Abs(vy);
+                vely[0] = Math.Abs(vely[0]);
             }
             if (label1.Right > ClientSize.Width)
             {
-                vx = -Math.Abs(vx);
+                velx[0] = -Math.Abs(velx[0]);
             }
             if (label1.Bottom > ClientSize.Height)
             {
-                vy = -Math.Abs(vy);
+                vely[0] = -Math.Abs(vely[0]);
             }
 
             if ((p.X >= label2.Left)
@@ -79,24 +91,24 @@ namespace fukusyu0607
                 timer1.Enabled = false;
             }
 
-            label2.Left += vx1;
-            label2.Top += vy1;
+            label2.Left += velx[1];
+            label2.Top += vely[1];
 
             if (label2.Left < 0)
             {
-                vx1 = Math.Abs(vx1);
+                velx[1] = Math.Abs(velx[1]);
             }
             if (label2.Top < 0)
             {
-                vy1 = Math.Abs(vy1);
+                vely[1] = Math.Abs(vely[1]);
             }
             if (label2.Right > ClientSize.Width)
             {
-                vx1 = -Math.Abs(vx1);
+                velx[1] = -Math.Abs(velx[1]);
             }
             if (label2.Bottom > ClientSize.Height)
             {
-                vy1 = -Math.Abs(vy1);
+                vely[1] = -Math.Abs(vely[1]);
             }
 
             if ((p.X >= label3.Left)
@@ -107,24 +119,24 @@ namespace fukusyu0607
                 timer1.Enabled = false;
             }
 
-            label3.Left += vx2;
-            label3.Top += vy2;
+            label3.Left += velx[2];
+            label3.Top += vely[2];
 
             if (label3.Left < 0)
             {
-                vx2 = Math.Abs(vx2);
+                velx[2] = Math.Abs(velx[2]);
             }
             if (label3.Top < 0)
             {
-                vy2 = Math.Abs(vy2);
+                vely[2] = Math.Abs(vely[2]);
             }
             if (label3.Right > ClientSize.Width)
             {
-                vx2 = -Math.Abs(vx2);
+                velx[2] = -Math.Abs(velx[2]);
             }
             if (label3.Bottom > ClientSize.Height)
             {
-                vy2 = -Math.Abs(vy2);
+                vely[2] = -Math.Abs(vely[2]);
             }
            // timer1--;
 
